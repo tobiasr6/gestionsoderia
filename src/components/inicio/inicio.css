@@ -1,0 +1,20 @@
+.inicio {
+    text-align: center;
+}
+
+.boxEstadisticas {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+    margin-top: 20px; /* Espaciado opcional */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.estadistica {
+    flex: 1 1 calc(50% - 10px); /* Ajusta el ancho para tener en cuenta el gap */
+    box-sizing: border-box; /* Incluye padding y border en el ancho y alto */
+    padding: 20px; /* Espaciado interno opcional */
+    border: 1px solid black; /* Bordes para visualizar mejor los divs */
+    text-align: center; /* Centrar texto */
+    background-color: #f0f0f0; /* Color de fondo opcional */
+}
