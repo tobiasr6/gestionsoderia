@@ -1,0 +1,65 @@
+/* components/clientes/Clientes.css */
+.clientes {
+    padding: 20px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.formulario input,
+.formulario select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.formulario button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formulario button:hover {
+    background-color: #0056b3;
+}
+
+.lista-clientes {
+    margin-top: 20px;
+}
+
+.cliente {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.cliente h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.cliente p {
+    margin: 0;
+}
+
+.btn-go-back {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-go-back:hover {
+    background-color: #0056b3;
+}

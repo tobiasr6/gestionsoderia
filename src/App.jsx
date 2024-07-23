@@ -1,21 +1,37 @@
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Login } from './components/login/Login';
 import { Inicio } from './components/inicio/Inicio';
-import { useState } from 'react';
+import { Clientes } from './components/clientes/Clientes';
+import { Pedidos } from './components/pedidos/Pedidos';
+import { useState, useEffect } from 'react';
+
 function App() {
+    const [user, setUser] = useState(null);
 
-  const [user, setUser] = useState([])
+    useEffect(() => {
 
-  return (
-    <div className="App">
+        localStorage.removeItem('users');
 
-      {
-      !user.length > 0 
-      ? <Login setUser={setUser}/> 
-      : <Inicio user = {user} setUser = {setUser}/>
-      }
-    </div>
-  );
+        const defaultUsers = [
+            { username: 'Tobias', password: '44873598' },
+            { username: 'T', password: '1' }
+        ];
+
+        if (!localStorage.getItem('users')) {
+            localStorage.setItem('users', JSON.stringify(defaultUsers));
+        }
+    }, []);
+
+    return (
+        <Router>
+            <Routes>
+                <Route path='/' element={<Login setUser={setUser} />} />
+                <Route path='/inicio' element={<Inicio user={user} setUser={setUser} />} />
+                <Route path='/clientes' element={<Clientes user={user} />} />
+                <Route path='/pedidos' element={<Pedidos />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
