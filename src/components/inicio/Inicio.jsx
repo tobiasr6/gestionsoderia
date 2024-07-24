@@ -4,12 +4,20 @@ import { useEffect, useState } from 'react';
 
 export function Inicio({ user, setUser }) {
     const [totalPedidos, setTotalPedidos] = useState(0);
+    const [totalClientes, setTotalClientes] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
         if (user) {
             const savedTotalPedidos = localStorage.getItem(`totalPedidos_${user}`);
             setTotalPedidos(savedTotalPedidos ? parseInt(savedTotalPedidos, 10) : 0);
+        }
+    }, [user]);
+
+    useEffect(() => {
+        const savedClientes = localStorage.getItem(`clientes_${user}`);
+        if (savedClientes) {
+            setTotalClientes(JSON.parse(savedClientes).length);
         }
     }, [user]);
 
@@ -27,7 +35,7 @@ export function Inicio({ user, setUser }) {
 
             <div className="boxEstadisticas">
                 <div onClick={() => navigate('/clientes')} className="estadistica clientes">
-                    Clientes
+                    Clientes: {totalClientes}
                 </div>
                 <div className="estadistica entregas">
                     Entregas
@@ -35,7 +43,7 @@ export function Inicio({ user, setUser }) {
                 <div className="estadistica zonas">
                     Zonas
                 </div>
-                <div className="estadistica pedidos">
+                <div onClick={() => navigate('/pedidos')} className="estadistica pedidos">
                     Pedidos: {totalPedidos}
                 </div>
             </div>

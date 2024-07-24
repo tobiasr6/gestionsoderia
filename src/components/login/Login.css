@@ -1,46 +1,75 @@
 /* Login.css */
-.formulario {
+section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
 }
 
-.formulario input {
-    margin: 10px 0;
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
     padding: 10px;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.password-container {
-    position: relative;
-    width: 100%;
-}
-
-.password-container input {
-    width: 100%;
-    padding-right: 50px; /* Espacio para el botón */
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .toggle-password {
-    position: absolute;
-    right: 10px; /* Ajuste a la derecha dentro del input */
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
+    padding: 5px;
+    font-size: 0.8rem;
     border: none;
+    background: none;
     cursor: pointer;
-    padding: 0 10px;
-    font-size: 0.9em;
-    color: blue;
-    display: flex;
-    align-items: center;
-}
-.remember-me {
-    margin-top: 10px;
+    color: #007bff;
 }
 
-.remember-me input[type='checkbox'] {
-    margin-right: 5px;
+.toggle-password:hover {
+    color: #0056b3;
+}
+
+button {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    color: red;
+}
+
+.register-link {
+    margin-top: 10px;
+    color: #007bff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1rem;
+}
+
+.register-link:hover {
+    color: #0056b3;
 }

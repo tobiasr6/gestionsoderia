@@ -35,6 +35,7 @@ export function Register( { setUser } ) {
         localStorage.setItem('users', JSON.stringify(storedUsers));
 
         setUser(nombre)
+        localStorage.setItem('loggedInUser', nombre);
         navigate('/inicio'); // Redirige al formulario de inicio de sesión
     };
 

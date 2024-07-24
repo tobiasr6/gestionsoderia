@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Login } from './components/login/Login';
+import { Register } from './components/registro/Registro';
 import { Inicio } from './components/inicio/Inicio';
 import { Clientes } from './components/clientes/Clientes';
 import { Pedidos } from './components/pedidos/Pedidos';
@@ -9,8 +10,10 @@ function App() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-
-        localStorage.removeItem('users');
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (loggedInUser) {
+            setUser(loggedInUser);
+        }
 
         const defaultUsers = [
             { username: 'Tobias', password: '44873598' },
@@ -28,6 +31,7 @@ function App() {
                 <Route path='/' element={<Login setUser={setUser} />} />
                 <Route path='/inicio' element={<Inicio user={user} setUser={setUser} />} />
                 <Route path='/clientes' element={<Clientes user={user} />} />
+                <Route path='/registro' element={<Register setUser={setUser} />} />
                 <Route path='/pedidos' element={<Pedidos />} />
             </Routes>
         </Router>
