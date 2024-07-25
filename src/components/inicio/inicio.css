@@ -25,4 +25,8 @@
     align-items: center;
 }
 
+.estadistica:hover{
+    cursor: pointer;
+}
+
 

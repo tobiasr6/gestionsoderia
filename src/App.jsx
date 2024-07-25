@@ -4,6 +4,7 @@ import { Register } from './components/registro/Registro';
 import { Inicio } from './components/inicio/Inicio';
 import { Clientes } from './components/clientes/Clientes';
 import { Pedidos } from './components/pedidos/Pedidos';
+import { Entregas } from './components/entregas/Entregas';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -32,7 +33,8 @@ function App() {
                 <Route path='/inicio' element={<Inicio user={user} setUser={setUser} />} />
                 <Route path='/clientes' element={<Clientes user={user} />} />
                 <Route path='/registro' element={<Register setUser={setUser} />} />
-                <Route path='/pedidos' element={<Pedidos />} />
+                <Route path='/pedidos' element={<Pedidos user={user}/>} />
+                <Route path='/entregas' element={<Entregas user={user}/>}/>
             </Routes>
         </Router>
     );

@@ -37,7 +37,7 @@ export function Inicio({ user, setUser }) {
                 <div onClick={() => navigate('/clientes')} className="estadistica clientes">
                     Clientes: {totalClientes}
                 </div>
-                <div className="estadistica entregas">
+                <div onClick={() => navigate('/entregas')} className="estadistica entregas">
                     Entregas
                 </div>
                 <div className="estadistica zonas">

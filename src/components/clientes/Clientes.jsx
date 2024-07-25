@@ -10,6 +10,7 @@ export function Clientes({ user }) {
     const [nombre, setNombre] = useState('');
     const [pedido, setPedido] = useState('');
     const [tipo, setTipo] = useState('Agua');
+    const [observaciones, setObservaciones] = useState('')
     const [dia, setDia] = useState('Lunes');
     const [editingIndex, setEditingIndex] = useState(null); 
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ export function Clientes({ user }) {
             return;
         }
 
-        const nuevoCliente = { nombre, pedido: `${pedido} ${tipo}`, dia };
+        const nuevoCliente = { nombre, pedido: `${pedido} ${tipo}`, dia, observaciones };
 
         if (editingIndex !== null) {
             const updatedClientes = [...clientes];
@@ -43,6 +44,7 @@ export function Clientes({ user }) {
         setPedido('');
         setTipo('Agua');
         setDia('Lunes');
+        setObservaciones('')
     };
 
     const handleEditCliente = (index) => {
@@ -51,11 +53,13 @@ export function Clientes({ user }) {
         setPedido(cliente.pedido.split(' ')[0]);
         setTipo(cliente.pedido.split(' ')[1]);
         setDia(cliente.dia);
+        setObservaciones(cliente.observaciones)
         setEditingIndex(index);
     };
 
     const handleDeleteCliente = (index) => {
-        const confirmation = window.confirm("¿Estás seguro de que quieres eliminar este cliente?");
+        const cliente = clientes[index];
+        const confirmation = window.confirm(`¿Estás seguro de que quieres eliminar este cliente? ${cliente.nombre}`);
         if (confirmation) {
             const updatedClientes = clientes.filter((_, i) => i !== index);
             setClientes(updatedClientes);
@@ -85,6 +89,12 @@ export function Clientes({ user }) {
                     value={pedido}
                     onChange={e => setPedido(e.target.value)}
                 />
+                <input
+                    placeholder='Observaciones'
+                    type='text'
+                    value={observaciones}
+                    onChange={e => setObservaciones(e.target.value)}
+                />
                 <div className="selects">
                     <select
                         value={tipo}
@@ -113,11 +123,11 @@ export function Clientes({ user }) {
                         <h2>{cliente.nombre}</h2>
                         <p>{cliente.pedido}</p>
                         <p>Dia de entrega: {cliente.dia}</p>
+                        <p>Observaciones: {cliente.observaciones}</p>
                         <div className="botones">
-                        <button onClick={() => handleEditCliente(index)}>Editar</button>
-                        <button onClick={() => handleDeleteCliente(index)}>Eliminar</button>
+                            <button onClick={() => handleEditCliente(index)}>Editar</button>
+                            <button onClick={() => handleDeleteCliente(index)}>Eliminar</button>
                         </div>
-                        
                     </div>
                 ))}
             </div>
