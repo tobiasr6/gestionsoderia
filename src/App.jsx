@@ -6,6 +6,7 @@ import { Clientes } from './components/clientes/Clientes';
 import { Pedidos } from './components/pedidos/Pedidos';
 import { Entregas } from './components/entregas/Entregas';
 import { useState, useEffect } from 'react';
+import './App.css'
 
 function App() {
     const [user, setUser] = useState(null);

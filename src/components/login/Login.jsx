@@ -1,6 +1,8 @@
 import './Login.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import sodappImage from './img/SODAPP.png';
 
 export function Login({ setUser }) {
     const [nombre, setNombre] = useState('');
@@ -13,7 +15,6 @@ export function Login({ setUser }) {
     useEffect(() => {
         const loggedInUser = localStorage.getItem('loggedInUser');
         const loggedInPassword = localStorage.getItem('loggedInPassword');
-        console.log('Usuario y contraseña recuperados:', loggedInUser, loggedInPassword); // Verifica los valores recuperados
         if (loggedInUser) {
             setNombre(loggedInUser);
             setRecordar(true);
@@ -45,7 +46,6 @@ export function Login({ setUser }) {
         if (recordar) {
             localStorage.setItem('loggedInUser', nombre);
             localStorage.setItem('loggedInPassword', contraseña);
-            console.log('Usuario y contraseña guardados:', nombre, contraseña); // Verifica los valores guardados
         } else {
             localStorage.removeItem('loggedInUser');
             localStorage.removeItem('loggedInPassword');
@@ -60,42 +60,49 @@ export function Login({ setUser }) {
 
     return (
         <section>
-            <h1>Login</h1>
-            <form className='formulario' onSubmit={handleSubmit}>
+            <Helmet>
+                <link
+                    rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+                />
+            </Helmet>
+            <div className="image">
+                <img src={sodappImage} alt="Logo" />
+            </div>
+            <form className="formulario" onSubmit={handleSubmit}>
                 <input 
-                    placeholder='Usuario'
-                    type='text'
+                    placeholder="Usuario"
+                    type="text"
                     value={nombre}
                     onChange={e => setNombre(e.target.value)}
-                    autoComplete='username'
-                    name='username'
+                    autoComplete="username"
+                    name="username"
                 />
                 <div className="password-wrapper">
                     <input
-                        placeholder='Contraseña'
-                        type={mostrarContraseña ? 'text' : 'password'}
+                        placeholder="Contraseña"
+                        type={mostrarContraseña ? "text" : "password"}
                         value={contraseña}
                         onChange={e => setContraseña(e.target.value)}
-                        autoComplete='current-password'
-                        name='password'
+                        autoComplete="current-password"
+                        name="password"
                     />
-                    <button
-                        type="button"
-                        className="toggle-password"
+                    <span
+                        className="material-symbols-outlined toggle-password"
                         onClick={() => setMostrarContraseña(!mostrarContraseña)}
                     >
-                        {mostrarContraseña ? 'Ocultar' : 'Mostrar'}
-                    </button>
+                        {mostrarContraseña ? 'visibility_off' : 'visibility'}
+                    </span>
                 </div>
                 <label>
                     <input 
-                        type='checkbox'
+                        type="checkbox"
                         checked={recordar}
                         onChange={e => setRecordar(e.target.checked)}
                     />
                     Recordarme
                 </label>
-                <button>Iniciar sesión</button>
+                <button type="submit">Iniciar sesión</button>
             </form>
             <button onClick={handleRegisterClick} className="register-link">
                 Registrar
