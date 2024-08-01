@@ -8,7 +8,6 @@ export function Login({ setUser }) {
     const [nombre, setNombre] = useState('');
     const [contraseña, setContraseña] = useState('');
     const [mostrarContraseña, setMostrarContraseña] = useState(false);
-    const [recordar, setRecordar] = useState(false);
     const [error, setError] = useState(false);
     const navigate = useNavigate();
 
@@ -17,7 +16,6 @@ export function Login({ setUser }) {
         const loggedInPassword = localStorage.getItem('loggedInPassword');
         if (loggedInUser) {
             setNombre(loggedInUser);
-            setRecordar(true);
         }
         if (loggedInPassword) {
             setContraseña(loggedInPassword);
@@ -43,14 +41,6 @@ export function Login({ setUser }) {
         setError(false);
         setUser(nombre);
 
-        if (recordar) {
-            localStorage.setItem('loggedInUser', nombre);
-            localStorage.setItem('loggedInPassword', contraseña);
-        } else {
-            localStorage.removeItem('loggedInUser');
-            localStorage.removeItem('loggedInPassword');
-        }
-
         navigate('/inicio');
     };
 
@@ -69,6 +59,7 @@ export function Login({ setUser }) {
             <div className="image">
                 <img src={sodappImage} alt="Logo" />
             </div>
+            <h1>¡Bienvenido!</h1>
             <form className="formulario" onSubmit={handleSubmit}>
                 <input 
                     placeholder="Usuario"
@@ -94,19 +85,12 @@ export function Login({ setUser }) {
                         {mostrarContraseña ? 'visibility_off' : 'visibility'}
                     </span>
                 </div>
-                <label>
-                    <input 
-                        type="checkbox"
-                        checked={recordar}
-                        onChange={e => setRecordar(e.target.checked)}
-                    />
-                    Recordarme
-                </label>
-                <button type="submit">Iniciar sesión</button>
+                <div className="botones">
+                    <button type="submit" className="btn btn-login">Iniciar sesión</button>
+                    <button onClick={handleRegisterClick} className="btn btn-register">Registrar</button>
+                </div>
             </form>
-            <button onClick={handleRegisterClick} className="register-link">
-                Registrar
-            </button>
+            
             {error && <p>Credenciales incorrectas</p>}
         </section>
     );

@@ -4,6 +4,8 @@ section {
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+
+    font-weight: 700;
 }
 
 h1 {
@@ -34,6 +36,9 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+input[type="checkbox"]{
+    cursor: pointer;
+}
 
 .password-wrapper {
     display: flex;
@@ -56,24 +61,46 @@ button {
     font-size: 1rem;
     border: none;
     border-radius: 5px;
-    background-color: #323f00;
+    background-color: rgb(50, 63, 0);
     color: white;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
 }
 
 p {
     color: red;
 }
 
-.register-link {
-    margin-top: 10px;
-    color: #007bff;
-    cursor: pointer;
-    background: none;
+.botones {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 3px;
+    width: 100% !important;
+}
+
+.btn{
+    box-sizing: border-box;
+
+}
+
+.botones .btn-login {
+    background-color:rgb(50, 63, 0);
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: rgb(38, 48, 0) !important;
+}
+
+.botones .btn-register {
+    box-sizing: content-box;
+    background-color: #f6f6f8;
+    color: black;
     border: none;
-    font-size: 1rem;
+}
+
+.botones .btn-register:hover {
+    background-color: #f6f6f8 ; 
+    box-shadow: 0 0 10px rgba(50, 63, 0, 0.3) ; 
 }

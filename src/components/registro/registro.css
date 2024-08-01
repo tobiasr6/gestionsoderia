@@ -8,7 +8,7 @@ section {
 
 h1 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-top: 0;
 }
 
 .formulario {
@@ -40,4 +40,48 @@ button:hover {
 
 p {
     color: red;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0;
+}
+
+.botones-registro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 3px;
+    width: 100% !important;
+}
+
+.btn{
+    box-sizing: border-box;
+
+}
+
+.botones-registro .btn-registro {
+    background-color:rgb(50, 63, 0);
+    color: white;
+}
+
+.btn-registro:hover {
+    background-color: rgb(38, 48, 0) !important;
+}
+
+.botones-registro .btn-cuenta {
+    box-sizing: content-box;
+    margin-left: 3px;
+    background-color: #f6f6f8;
+    color: black;
+    border: none;
+}
+
+.botones-registro .btn-cuenta:hover {
+    background-color: #f6f6f8 ; 
+    box-shadow: 0 0 10px rgba(50, 63, 0, 0.3) ; 
+}
+
+.contraseña-register, .confirmarContraseña-register{
+    display: flex;
+    align-items: center;
 }

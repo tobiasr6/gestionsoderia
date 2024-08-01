@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 export function Inicio({ user, setUser }) {
     const [totalPedidos, setTotalPedidos] = useState(0);
     const [totalClientes, setTotalClientes] = useState(0);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,24 +28,43 @@ export function Inicio({ user, setUser }) {
         navigate('/');
     };
 
-    return (
-        <div className="inicio">
-            <h1>Bienvenido</h1>
-            <h2>{user}</h2>
-            <button onClick={handleLogout}>Cerrar sesión</button>
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
 
-            <div className="boxEstadisticas">
-                <div onClick={() => navigate('/clientes')} className="estadistica clientes">
-                    Clientes: {totalClientes}
-                </div>
-                <div onClick={() => navigate('/entregas')} className="estadistica entregas">
-                    Entregas
-                </div>
-                <div className="estadistica zonas">
-                    Zonas
-                </div>
-                <div onClick={() => navigate('/pedidos')} className="estadistica pedidos">
-                    Pedidos: {totalPedidos}
+    return (
+        <div className={`inicio ${sidebarOpen ? 'sidebar-open' : ''}`}>
+            <button className="menu-toggle" onClick={toggleSidebar}>
+                ☰
+            </button>
+            
+            <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
+                <button className="close-sidebar" onClick={toggleSidebar}>
+                    &times;
+                </button>
+                <nav>
+                    <div onClick={() => navigate('/clientes')}>Clientes</div>
+                    <div onClick={() => navigate('/entregas')}>Entregas</div>
+                    <div onClick={() => navigate('/zonas')}>Zonas</div>
+                    <div onClick={() => navigate('/pedidos')}>Pedidos</div>
+                </nav>
+                <button onClick={handleLogout} className="logout-btn">Cerrar sesión</button>
+            </div>
+
+            <div className="content">
+                <div className="boxEstadisticas">
+                    <div className="estadistica clientes">
+                        Clientes: {totalClientes}
+                    </div>
+                    <div className="estadistica entregas">
+                        Entregas
+                    </div>
+                    <div className="estadistica zonas">
+                        Zonas
+                    </div>
+                    <div className="estadistica pedidos">
+                        Pedidos: {totalPedidos}
+                    </div>
                 </div>
             </div>
         </div>
